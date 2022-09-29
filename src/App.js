@@ -1,28 +1,28 @@
 import { useState } from "react";
-//import ToDoForm from "./components/ToDoForm";
-//import ToDoList from "./components/ToDoList";
-import Editor from "./components/Editor";
+import Form from "./components/Form";
+import Header from "./components/Header";
+import ToDoList from "./components/ToDoList";
 import "./App.css";
 
 function App() {
-  const [toDoList, setToDoList] = useState([]);
+const [input, setInput] = useState("");
+const [toDos, setToDos] = useState([])
 
-  const addToDo = (todo) => {
-    setToDoList((toDoList) => [...toDoList, todo]);
-  };
 
-  const completedToDo = (index) => {
-    const newToDo = toDoList.filter((todo, i) => i !== index);
-    setToDoList(newToDo);
-  };
 
   return (
-    <Editor
-      todoList={toDoList}
-      addToDo={addToDo}
-      completedToDo={completedToDo}
-    />
-  );
+    <div className="App">
+      <Header />
+      <Form
+      input={input}
+      setInput={setInput}
+      toDos={toDos}
+      setToDos={setToDos} />
+      <ToDoList toDos={toDos} setToDos={setToDos}/>
+
+      </div>
+
+  )
 }
 
 export default App;
