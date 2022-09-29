@@ -1,27 +1,37 @@
-//import { useState } from "react";
-import ToDoForm from "./components/ToDoForm";
+import { useState } from "react";
+//import ToDoForm from "./components/ToDoForm";
 //import ToDoList from "./components/ToDoList";
+import Editor from "./components/Editor";
 // import "./App.css";
 
 
 
 function App() {
-  /*   const [todos, setTodo] = useState([]);
 
-  function addTodo(todo) {
-    setTodo([todo, ...todos]);
+  const [toDoList, setToDoList] = useState([]);
 
+  const addToDo = (todo) => {
+    setToDoList(toDoList => [...toDoList, todo]);
 
-  } */
+  }
+
+  const completedToDo = (index) => {
+    const newToDo = toDoList.filter((todo, i) => i !== index);
+    setToDoList(newToDo);
+  }
+
 
   return (
     <div className="App">
-          <input type="checkbox"/>
-    <li>{todo.task}</li>
-    <button>Add Task</button>
-      <ToDoForm />
-    </div>
-  );
+ 
+
+
+      <Editor todoList={toDoList} addToDo={addToDo} completedToDo={completedToDo}/>
+
+      </div>
+
+
+  )
 }
 
 export default App;
