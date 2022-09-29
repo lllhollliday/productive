@@ -1,27 +1,28 @@
-//import { useState } from "react";
-import ToDoForm from "./components/ToDoForm";
-//import ToDoList from "./components/ToDoList";
-// import "./App.css";
-
-
+import { useState } from "react";
+import Form from "./components/Form";
+import Header from "./components/Header";
+import ToDoList from "./components/ToDoList";
+import "./App.css";
 
 function App() {
-  /*   const [todos, setTodo] = useState([]);
-
-  function addTodo(todo) {
-    setTodo([todo, ...todos]);
+const [input, setInput] = useState("");
+const [toDos, setToDos] = useState([])
 
 
-  } */
 
   return (
     <div className="App">
-          <input type="checkbox"/>
-    <li>{todo.task}</li>
-    <button>Add Task</button>
-      <ToDoForm />
-    </div>
-  );
+      <Header />
+      <Form
+      input={input}
+      setInput={setInput}
+      toDos={toDos}
+      setToDos={setToDos} />
+      <ToDoList toDos={toDos} setToDos={setToDos}/>
+
+      </div>
+
+  )
 }
 
 export default App;
