@@ -1,30 +1,25 @@
 import React from "react";
-
+import ToDo from "./ToDo";
 
 const ToDoList = ({ toDos, setToDos }) => {
-
-const deleteToDo = ({id}) => {
-        setToDos(toDos.filter((todo.id !== id)))
-    }
-
   return (
-    <div>
-      {toDos.map((todo) => (
-        <li className="todo-list" key={todo.id}>
-          <input
-            type="text"
-            className="list"
-            value={todo.title}
-            onChange={(e) => e.preventDefault()}
+    <div className="toDoContainer">
+      <ul className="toDoList">
+        {toDos.map((todo) => ( // Here I want to map through the toDos state which have been passed down as props, and update the values in the ToDo.js file. 
+
+          <ToDo // Here we pass the states, and the mapped todo items, in order to create functionality with them
+          
+            toDos={toDos} 
+            setToDos={setToDos} 
+            todo={todo}
+            text={todo.text}
+            id={todo.id}
+            key={todo.id}
           />
-        </li>
-      ))}
-      <div>
-        <button onClick={() => deleteToDo(todo)}>Completed</button>
-        <button>Delete</button>
-      </div>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
 export default ToDoList;
